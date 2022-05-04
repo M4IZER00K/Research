@@ -34,15 +34,20 @@ for dataSet in dataList[2:]:
 def compute(Protein):
     senstivity = 0.0
     specificity = 0.0
+    dPos = 0.0
+    dNeg = 0.0
     total = 0.0
     for dataPoint in Protein[1:]:
-        if (float(dataPoint[0]) > 2 or dataPoint[1] == "Case"):
-            senstivity += 1
-        if (float(dataPoint[0]) <= 2 or dataPoint[1] == "Control"):
-            specificity += 1
-        total += 1
-    p_Y1_D1 = senstivity/total
-    p_Y0_D0 = specificity/total
+        if (dataPoint[1] == "Case"):
+            dPos += 1
+            if (float(dataPoint[0]) > 2):
+                senstivity += 1
+        if (dataPoint[1] == "Control"):
+            dNeg += 1
+            if (float(dataPoint[0]) <= 2):
+                specificity += 1
+    p_Y1_D1 = senstivity/dPos
+    p_Y0_D0 = specificity/dNeg
     return ((p_Y1_D1,p_Y0_D0))
 
 results = [[]]
