@@ -1,4 +1,5 @@
 import csv as cs
+from dataclasses import fields
 from re import X
 import string
 from tokenize import Double
@@ -44,10 +45,19 @@ def compute(Protein):
     p_Y0_D0 = specificity/total
     return ((p_Y1_D1,p_Y0_D0))
 
+results = [[]]
+fieldName = ["Protein","Sensitivity","Specificity"]
+
 for protein in finalData:
     prob = compute(protein)
-    print(protein[0])
-    print("Sensitivity = ", prob[0])
-    print("Specificity = ", prob[1])
-    print("===========================================")
-    print()
+    results.append([protein[0],prob[0],prob[1]])
+    #protein[0] -> name 
+    #prob[0] -> Sensitivity
+    #prob[1] -> Specificity
+   
+with open('resultsWeek1.csv', 'w') as csvfile:
+    filewriter = cs.writer(csvfile, delimiter=',',
+        quotechar='|', quoting=cs.QUOTE_MINIMAL)
+    filewriter.writerow(fieldName)
+    filewriter.writerows(results)
+print("done")
