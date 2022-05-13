@@ -143,7 +143,7 @@ def conjunctive():
     notR_r_ = {"test": []}
     R_r_.pop("test")
     notR_r_.pop("test")
-    for Protein in subsetData[:50]:
+    for Protein in subsetData:
         tempProteinCorrelatedData = []
         notTempProteinCorrelatedData = []
         for SecondProtein in subsetData:
@@ -195,7 +195,7 @@ def disjunctive():
     notR_r_ = {"test": []}
     R_r_.pop("test")
     notR_r_.pop("test")
-    for Protein in subsetData[:50]:
+    for Protein in subsetData:
         tempProteinCorrelatedData = []
         notTempProteinCorrelatedData = []
         for SecondProtein in subsetData:
@@ -282,73 +282,3 @@ disjunctive()
 finalReturn()
 writeCSV()
 #print(*finalReturnData)
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-#creates subset D(r) for each Protein
-subsetD_r_.pop(0)
-for Protein in subsetData[:250]:
-    index = 0
-    counter = 0
-    while index == 0:
-        #print(finalData[index][0] == Protein)
-        if (finalData[counter][0] == Protein[0]):
-            index = counter
-        counter += 1
-    tempData = finalData[index]
-    
-    deleteIndex = 1
-    for point in tempData[1:]:
-        if float(point[0]) <= 2:
-            tempData.pop(deleteIndex)
-        else:
-            deleteIndex += 1
-    subsetD_r_.append(tempData)
-print("done: ",*subsetD_r_[1])
-
-
-subsetR_r.pop(0)
-index = 0
-for Protein in subsetD_r_:
-    subsetR_r.append([Protein[0]])
-    for dataPoint in Protein:
-        for secondary in subsetD_r_:
-            for dataPoint2 in secondary:
-                if dataPoint[1:] == dataPoint2[1:] and Protein[0] != secondary[0]:
-                    #print(dataPoint[1:])
-                    subsetR_r[index].append((secondary[0],dataPoint))
-    index += 1
-
-
-setR_r = [[]]
-setR_r.pop(0)
-for Protein in subsetD_r_:
-    setR_r.append([Protein[0]])
-    for SecondProtein in subsetD_r_:
-        if Protein[0] != SecondProtein[0]:
-            for Point in Protein:
-
-
-
-
-max = 0
-index = 0
-for test in subsetR_r:
-    if len(test) > max:
-        max = len(test)
-        hi = index
-    index += 1
-print(max)
-print(*subsetR_r[hi])
-'''
-
