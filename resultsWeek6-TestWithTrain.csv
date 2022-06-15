@@ -1,4 +1,4 @@
-           ,  ,    ,Baseline(240,32 ~ 38 P),    ,  ,     ,Top 30 Conj(204,34 ~ 40 P),    ,  ,     ,Top 30 Disj(156,35 ~ 53 N),    
+           ,  ,    ,Baseline(240-32 ~ 38 P),    ,  ,     ,Top 30 Conj(204-34 ~ 40 P),    ,  ,     ,Top 30 Disj(156-35 ~ 53 N),    
 
 Training Data,  ,Model,GT     ,Type,  ,Model,GT         ,Type,  ,Model,GT         ,Type
 
